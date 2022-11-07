@@ -1,6 +1,7 @@
 import './signup.css';
 
-const signUpSubmit = () => {
+const signUpSubmit = (e) => {
+  e.preventDefault();
   alert("bye");
 }
 

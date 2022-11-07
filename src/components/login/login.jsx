@@ -1,5 +1,7 @@
 import './login.css'
-const logInSubmit = () => {
+const logInSubmit = (e) => {
+  e.preventDefault();
+
   alert("hi");
 }
 
