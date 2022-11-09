@@ -1,4 +1,5 @@
 import './signup.css';
+import {Link} from 'react-router-dom';
 
 const signUpSubmit = (e) => {
   e.preventDefault();
@@ -8,11 +9,16 @@ const signUpSubmit = (e) => {
 
 function SignUp() {
     return (
-      <div id="signup-container">
-        <h2>SignUp</h2>
+      <div id="signup-page">
+        <h3>hee</h3>
+        <div id="signup-container">
+        <div id="signup-header">
+        <span className='signup-title'>Create New Account</span>
+        <span className='tr'>It's easy and quick.</span>
+        </div>
         <div id="signup-inputs-box">
           <form onSubmit={signUpSubmit}>
-          <div className='input-col'>
+          <div className='input-col sm-col'>
             <input type="text" placeholder="Your First Name" className="fname-inp sm-field" />
             <input type="text" placeholder="Your Last Name" className="lname-inp sm-field" />
           </div>
@@ -35,9 +41,11 @@ function SignUp() {
             <input type="radio" value={`female`} />
             <label htmlFor="male">Female</label>
           </div>
-          <button type="submit">Sign Up</button>
+          <button type="submit" id='signup-btn'>Sign Up</button>
           </form>
+          <p><Link to={`../components/login/login`}>Already have an account?</Link></p>
         </div>
+      </div>
       </div>
     );
   }
