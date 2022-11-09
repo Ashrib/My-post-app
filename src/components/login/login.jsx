@@ -1,4 +1,6 @@
 import './login.css'
+import {Link} from 'react-router-dom';
+
 const logInSubmit = (e) => {
   e.preventDefault();
 
@@ -8,8 +10,12 @@ const logInSubmit = (e) => {
 
 function LogIn() {
     return (
-      <div id="login-container">
-        <h2>LogIn</h2>
+      <div id="login-page">
+        <div id="login-container">
+        <div id="login-header">
+        <span className='login-title'>LogIn</span>
+        <span className='head-text'>It's easy and quick.</span>
+        </div>
         <div id="login-inputs-box">
           <form onSubmit={logInSubmit}>
           <div className='input-col'>
@@ -18,9 +24,11 @@ function LogIn() {
           <div className='input-col'>
             <input type="text" placeholder="Enter your password" className="password-inp inp-field" />
           </div>
-          <button type="submit">Log in</button>
+          <button type="submit" id='login-btn'>Log In</button>
           </form>
         </div>
+          <Link to={`../components/signup/signup`}><button type="submit" id='signup-btn'>Create New Account</button></Link>
+      </div>
       </div>
     );
   }

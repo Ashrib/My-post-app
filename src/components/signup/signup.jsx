@@ -10,11 +10,10 @@ const signUpSubmit = (e) => {
 function SignUp() {
     return (
       <div id="signup-page">
-        <h3>hee</h3>
         <div id="signup-container">
         <div id="signup-header">
         <span className='signup-title'>Create New Account</span>
-        <span className='tr'>It's easy and quick.</span>
+        <span className='head-text'>It's easy and quick.</span>
         </div>
         <div id="signup-inputs-box">
           <form onSubmit={signUpSubmit}>

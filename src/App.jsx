@@ -4,6 +4,8 @@ import SignUp from './components/signup/signup.jsx';
 import LogIn from './components/login/login.jsx';
 
 function App() {
+  // const lik = window.location.href();
+  // console.log(lik)
   return (
     <div >
       <nav>
