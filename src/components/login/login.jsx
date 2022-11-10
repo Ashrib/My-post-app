@@ -1,14 +1,33 @@
 import './login.css'
 import {Link} from 'react-router-dom';
+import { useState } from 'react';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-const logInSubmit = (e) => {
-  e.preventDefault();
-
-  alert("hi");
-}
 
 
 function LogIn() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  
+  const logInSubmit = (e) => {
+    e.preventDefault();
+  
+  const auth = getAuth();
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+    console.log("login success",user);
+    // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    console.log("login errror",error);
+  });
+  }
+
+
     return (
       <div id="login-page">
         <div id="login-container">
@@ -18,10 +37,16 @@ function LogIn() {
         <div id="login-inputs-box">
           <form onSubmit={logInSubmit}>
           <div className='input-col'>
-            <input type="text" placeholder="Enter your email" className="email-inp inp-field" />
+            <input type="email" name='username'
+            placeholder="Enter your email" className="email-inp inp-field" 
+            onChange={ (e) => {setEmail(e.target.value)} }
+            />
           </div>
           <div className='input-col'>
-            <input type="text" placeholder="Enter your password" className="password-inp inp-field" />
+            <input type="password" name='current-password'
+            placeholder="Enter your password" className="password-inp inp-field" 
+            onChange={ (e) => {setPassword(e.target.value)} }
+            />
           </div>
           <button type="submit" id='login-btn'>Log In</button>
           </form>
