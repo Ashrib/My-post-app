@@ -1,7 +1,12 @@
+#body-div{
+    height: calc(100vh);
+    width: calc(100vw);
+}
+
 #container{
     display: flex;
     justify-content: center;
-    /* background-color: aqua; */
+    align-items: center;
 }
 nav{
     display: flex;

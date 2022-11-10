@@ -4,6 +4,8 @@
     flex-direction: column;
     width: 100%;
     align-items: center;
+    justify-content: center;
+    height: calc(100vh);
 }
 #login-container{
     display: flex;
@@ -29,7 +31,8 @@
 #login-inputs-box{
     border-top: 1px solid gray;
     border-bottom: 1px solid gray;
-    padding: 10px 3px;
+    padding: 10px 3px;    
+    width: 100%;
 }
 
 form{

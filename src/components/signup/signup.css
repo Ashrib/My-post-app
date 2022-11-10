@@ -6,6 +6,9 @@ body{
     flex-direction: column;
     width: 100%;
     align-items: center;
+    justify-content: center;
+    height: calc(100vh);
+    background-color: aqua;
 }
 #signup-page>h3{
     width: 100%;
@@ -37,7 +40,6 @@ body{
 }
 form{
     width: auto;
-    /* background-color: rgb(251, 255, 0); */
     margin: 0px 3px;
 }
 .input-col{
