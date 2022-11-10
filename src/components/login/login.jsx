@@ -14,7 +14,6 @@ function LogIn() {
         <div id="login-container">
         <div id="login-header">
         <span className='login-title'>LogIn</span>
-        <span className='head-text'>It's easy and quick.</span>
         </div>
         <div id="login-inputs-box">
           <form onSubmit={logInSubmit}>

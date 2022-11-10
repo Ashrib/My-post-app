@@ -35,10 +35,10 @@ function SignUp() {
           </div>
           <div className='input-col'>
             Gender:<br/>
-            <input type="radio" value={`male`} />
-            <label htmlFor="male">Male</label>
-            <input type="radio" value={`female`} />
-            <label htmlFor="male">Female</label>
+            <input type="radio" name='gender' value={`male`} />
+            <label htmlFor="male" >Male</label>
+            <input type="radio" name='gender' value={`female`} />
+            <label htmlFor="male" >Female</label>
           </div>
           <button type="submit" id='signup-btn'>Sign Up</button>
           </form>
