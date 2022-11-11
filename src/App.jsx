@@ -63,9 +63,7 @@ function App() {
         (isLogin)?
         <nav>
         <ul>
-          {/* <li><Link to={`./components/signup/signup`}>Logout</Link></li> */}
           <li onClick={logOutHandler}>Logout</li>
-          {/* <li><Link to={`./components/login/login`}>login</Link></li> */}
         </ul>
         </nav>
         :
@@ -73,29 +71,22 @@ function App() {
       }
 
       <div id='container'>
-      {/* <Routes>
-        <Route path="/" element={<LogIn />}/>
-        <Route path="/components/signup/signup" element={<SignUp />} />
-        <Route path="/components/login/login" element={<LogIn />} />
-        <Route path="/components/home/home" element={<Home />} />
-        <Route path="*" element={<div>page not found</div>} /> */}
+      
         {(isLogin) ?
 
           <Routes>
-  <Route path="/" element={<Home />} />
-  <Route path="*" element={<Navigate to="/" replace={true} />} />
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<Navigate to="/" replace={true} />} />
           </Routes>
         :
         <Routes>
-  <Route path="/" element={<LogIn />}/>
-  <Route path="/components/signup/signup" element={<SignUp />} />
-  <Route path="/components/login/login" element={<LogIn />} />
-  {/* <Route path="/components/home/home" element={<Home />} /> */}
-  <Route path="*" element={<div>page not found</div>} />
-  <Route path="*" element={<Navigate to="/" replace={true} />} />
+            <Route path="/" element={<LogIn />}/>
+            <Route path="/components/signup/signup" element={<SignUp />} />
+            <Route path="/components/login/login" element={<LogIn />} />
+            <Route path="*" element={<div>page not found</div>} />
+            <Route path="*" element={<Navigate to="/" replace={true} />} />
         </Routes>
         }
-      {/* </Routes>  */}
       </div> 
     </div>
   );
