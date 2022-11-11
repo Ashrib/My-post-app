@@ -5,7 +5,8 @@ import reportWebVitals from './reportWebVitals';
 import App from './App.jsx';
 import { BrowserRouter } from 'react-router-dom';
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+// import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
 
 
 const firebaseConfig = {
@@ -20,8 +21,9 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
+// const analytics = getAnalytics(app);
+// Initialize Firebase Authentication and get a reference to the service
+const auth = getAuth(app);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

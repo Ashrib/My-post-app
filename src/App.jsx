@@ -1,10 +1,10 @@
 import './App.css';
-import {Route , Routes, Link} from 'react-router-dom';
+import {Route , Routes, Link, Navigate } from 'react-router-dom';
 import SignUp from './components/signup/signup.jsx';
 import LogIn from './components/login/login.jsx';
-import Home from './components/home/home';
+import Home from './components/home/home.jsx';
 import { useEffect, useState } from 'react';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
 function App() {
   
@@ -13,24 +13,28 @@ function App() {
 
   useEffect(() => {
     const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
+    const unSubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User
       setIsLogin(true);
       const uid = user.uid;
       console.log("login success", user);
-      // setIsHome(true)************
-      // window.location.assign("http://localhost:3000/components/home/home");**********
+      // setIsHome(true)//************
       // ...
-      } else {
-        // User is signed out
-      console.log("logout success");
+    } else {
+      // User is signed out
+      console.log("logout ");
       setIsLogin(false);
       // setIsHome(false)**************
       // ...
       }
     });
+
+
+    return () => {
+      unSubscribe();
+    }
 
   }, []);
  
@@ -38,6 +42,17 @@ function App() {
   //logout--------
   const logOutHandler = ()  => {
     setIsLogin(false);
+    // window.location.assign("http://localhost:3000/components/home/home");//**********
+    
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      console.log("logout success");
+    }).catch((error) => {
+  // An error happened.
+});
+
+
 
   }
 
@@ -50,7 +65,7 @@ function App() {
         <ul>
           {/* <li><Link to={`./components/signup/signup`}>Logout</Link></li> */}
           <li onClick={logOutHandler}>Logout</li>
-          <li><Link to={`./components/login/login`}>login</Link></li>
+          {/* <li><Link to={`./components/login/login`}>login</Link></li> */}
         </ul>
         </nav>
         :
@@ -58,17 +73,29 @@ function App() {
       }
 
       <div id='container'>
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<LogIn />}/>
         <Route path="/components/signup/signup" element={<SignUp />} />
         <Route path="/components/login/login" element={<LogIn />} />
-        <Route path="*" element={<div>page not found</div>} />
-        {/* {  **********************
-        (isHome)?
         <Route path="/components/home/home" element={<Home />} />
-        : null
-        } */}
-      </Routes> 
+        <Route path="*" element={<div>page not found</div>} /> */}
+        {(isLogin) ?
+
+          <Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="*" element={<Navigate to="/" replace={true} />} />
+          </Routes>
+        :
+        <Routes>
+  <Route path="/" element={<LogIn />}/>
+  <Route path="/components/signup/signup" element={<SignUp />} />
+  <Route path="/components/login/login" element={<LogIn />} />
+  {/* <Route path="/components/home/home" element={<Home />} /> */}
+  <Route path="*" element={<div>page not found</div>} />
+  <Route path="*" element={<Navigate to="/" replace={true} />} />
+        </Routes>
+        }
+      {/* </Routes>  */}
       </div> 
     </div>
   );
